@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7ead1" />
+  <title>辟雍学府 2.0</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">代号鸢玩家工具</div>
+        <h1>辟雍学府 2.0</h1>
+      </div>
+      <button class="ghost" id="exportBtn">导出数据</button>
+    </header>
+
+    <main>
+      <section class="hero card">
+        <div>
+          <span class="pill">V0.1 · 免费网页版</span>
+          <h2>先把最好用的功能做扎实</h2>
+          <p>密探库、招募记录、操作记录仪，全部先保存在浏览器本地。无需注册，无需服务器。</p>
+        </div>
+      </section>
+
+      <nav class="tabs" aria-label="主功能">
+        <button class="tab active" data-tab="home">首页</button>
+        <button class="tab" data-tab="agents">我的密探</button>
+        <button class="tab" data-tab="recruit">招募记录</button>
+        <button class="tab" data-tab="ops">操作记录仪</button>
+      </nav>
+
+      <section id="home" class="panel active">
+        <h3>常用功能</h3>
+        <div class="grid">
+          <button class="feature-card" data-go="agents"><b>我的密探库</b><span>记录等级、星级、命盘与面板</span></button>
+          <button class="feature-card" data-go="recruit"><b>招募记录</b><span>统计总抽数、绝密、平均出绝密</span></button>
+          <button class="feature-card" data-go="ops"><b>操作记录仪</b><span>按回合记录普攻 / 技能 / 防御</span></button>
+          <button class="feature-card muted"><b>智能配队</b><span>下一版开放</span></button>
+          <button class="feature-card muted"><b>攻略 / 作业库</b><span>下一版开放</span></button>
+          <button class="feature-card muted"><b>资源 & 星石</b><span>下一版开放</span></button>
+        </div>
+      </section>
+
+      <section id="agents" class="panel">
+        <div class="section-head">
+          <div><h3>我的密探库</h3><p>目前先做最常用字段。</p></div>
+          <button class="primary" id="addAgentBtn">+ 添加密探</button>
+        </div>
+        <div id="agentList" class="stack"></div>
+      </section>
+
+      <section id="recruit" class="panel">
+        <div class="stats-grid">
+          <div class="stat card"><span>总招募次数</span><strong id="totalPulls">0</strong></div>
+          <div class="stat card"><span>总绝密数量</span><strong id="totalGolds">0</strong></div>
+          <div class="stat card"><span>平均出绝密</span><strong id="avgGold">—</strong></div>
+        </div>
+        <div class="card form-card">
+          <h3>新增招募记录</h3>
+          <div class="form-grid">
+            <label>卡池名称<input id="poolName" placeholder="例如：绣衣天下" /></label>
+            <label>本次抽数<input id="pullCount" type="number" min="1" value="10" /></label>
+            <label>绝密数量<input id="goldCount" type="number" min="0" value="0" /></label>
+            <label>获得角色<input id="goldNames" placeholder="例如：赵云、干吉" /></label>
+          </div>
+          <button class="primary" id="addRecruitBtn">保存记录</button>
+        </div>
+        <div id="recruitList" class="stack"></div>
+      </section>
+
+      <section id="ops" class="panel">
+        <div class="section-head">
+          <div><h3>操作记录仪</h3><p>点击角色动作即可快速记录。</p></div>
+          <button class="primary" id="addRoundBtn">+ 新增回合</button>
+        </div>
+        <div class="card form-card compact">
+          <label>阵容（用顿号或逗号分隔）<input id="teamInput" value="张邈、董奉、诸葛亮" /></label>
+          <button class="ghost" id="applyTeamBtn">应用阵容</button>
+        </div>
+        <div id="roundList" class="stack"></div>
+        <div class="actions-row">
+          <button class="ghost" id="copyOpsBtn">复制文本</button>
+          <button class="danger" id="clearOpsBtn">清空记录</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>数据当前仅保存在本机浏览器 · 后续可接 Supabase 云端同步</footer>
+  </div>
+
+  <dialog id="agentDialog">
+    <form method="dialog" class="dialog-card" id="agentForm">
+      <h3>添加密探</h3>
+      <label>名称<input id="agentName" required /></label>
+      <label>等级<input id="agentLevel" type="number" min="1" value="1" /></label>
+      <label>星级<input id="agentStars" type="number" min="0" max="5" value="0" /></label>
+      <label>命盘<input id="agentFate" placeholder="例如：技能增伤 / 普攻强化" /></label>
+      <label>攻击<input id="agentAtk" type="number" min="0" value="0" /></label>
+      <label>生命<input id="agentHp" type="number" min="0" value="0" /></label>
+      <div class="actions-row">
+        <button value="cancel" class="ghost">取消</button>
+        <button value="default" class="primary" id="saveAgentBtn">保存</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

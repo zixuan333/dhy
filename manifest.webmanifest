@@ -1,0 +1,9 @@
+{
+  "name":"辟雍学府 2.0",
+  "short_name":"辟雍2.0",
+  "start_url":"./",
+  "display":"standalone",
+  "background_color":"#f8f3ea",
+  "theme_color":"#f7ead1",
+  "icons":[]
+}
