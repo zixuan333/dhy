@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F3DFC0" />
+  <title>广陵秘学</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">代号鸢玩家工具站</div>
+        <h1>广陵秘学</h1>
+        <p class="subtitle">密探 · 攻略 · 养成 · 记录</p>
+      </div>
+      <button class="icon-btn" id="moreBtn" aria-label="更多">⋯</button>
+    </header>
+
+    <section class="account-strip">
+      <span>当前账号</span>
+      <button id="accountBtn" class="account-btn">主号 ▾</button>
+    </section>
+
+    <main id="app"></main>
+  </div>
+
+  <dialog id="modal"><div id="modalBody"></div></dialog>
+  <div id="toast" class="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
